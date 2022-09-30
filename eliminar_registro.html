@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+
+{% block titulo %}
+    Eliminar Registro
+{% endblock titulo %}
+
+<!--Un titulo que hereda de base.html-->
+{% block pagina %}
+   Eliminar un registro
+{% endblock pagina %}
+
+{% block cuerpo %}
+    <form method="post">
+        {% csrf_token %}
+        <p class "h2 navbar-brand"> Eliminar registro {{registro.mascotas.user.first_name}} {{registro.mascotas.user.last_name}} del registro</p>
+        <button type="btn btn-danger" type= "submit">Sí, eliminar</button>
+        <a href="{% url 'lista-registros' %}" class="btn btn-default">Cancelar</a>
+    </form>
+{% endblock cuerpo %}

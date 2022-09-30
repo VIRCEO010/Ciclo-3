@@ -1,0 +1,53 @@
+<!--Se trae la extención de la base-->
+{% extends 'layout/base.html' %}
+
+<!--Se nombre la pagina con lo que hereda de base.html-->
+{% block titulo %}
+    Listar Registro
+{% endblock titulo %}
+
+<!--Un titulo que hereda de base.html-->
+{% block pagina %}
+    Registros
+{% endblock pagina %}
+
+<!--se hereda lo del cuenpo de base.html-->
+{% block cuerpo %}
+    <a href="{% url 'crear-registro' %}" class="btn btn-primary mb-3">Ingresar Registro</a>
+    <div class="table-responsive">
+        <table class="table table-striped-column">
+            <tr>
+                <th>ID</th>            
+                <th>Numero Historial</th>            
+                <th>Fecha</th>
+                <th>Motivo</th>
+                <th>Anamnesicos</th>
+                <th>Diagnostico</th>
+                <th>Tratamiento</th>
+                <th>Mascota ID</th>
+                <th>Veterinario ID</th>
+
+            </tr>
+            {% for registro in  registros%}
+            <tr>
+                <td>{{registro.id}}</td>
+                <td>{{registro.num_historial}}</td>             
+                <td>{{registro.fecha}}</td>
+                <td>{{registro.motivo}}</td>
+                <td>{{registro.anamnesicos}}</td>
+                <td>{{registro.diagnostico}}</td>
+                <td>{{registro.tratamiento}}</td>
+                <td>{{registro.mascota_id}}</td>
+                <td>{{registro.veterinario_id}}</td>
+                <td>{{registro.mascota.first_name}} {{registro.mascota.last_name}}</td> 
+                <td>{{registro.veterinario.first_name}} {{registro.veterinario.last_name}}</td>              
+                <td>{{veterinario.persona.celular}}</td>
+                <td>
+                    <a href="{% url 'actualizar-registro' registro.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'eliminar-registro' registro.id %}" class="btn btn-danger">Eliminar</a>
+                </td>          
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock cuerpo %}

@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+
+{% block titulo %}
+    Crear Registro
+{% endblock titulo %}
+
+<!--Un titulo que hereda de base.html-->
+{% block pagina %}
+    Formulario para Registro
+{% endblock pagina %}
+
+{% block cuerpo %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <button type="submit">Guadar</button>
+        <button type="reset">Borrar</button>
+    </form>
+{% endblock cuerpo %}
+
+
