@@ -145,4 +145,51 @@ class LoginForm(forms.Form):
             'placeholder': 'password'
         }
     ))
+
+#FORMS DE REGISTRO
+class RegistroForm(forms.ModelForm):
+    
+    mascota=forms.ModelChoiceField(queryset=Group.objects.all(), widget=forms.Select(
+        attrs={
+            'class':'form-select'
+        }
+    ))
+    veterinario = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+    num_historial= forms.CharField(max_length=120, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    fecha= forms.CharField(max_length=120, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    motivo= forms.CharField(max_length=20, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    anamnesicos= forms.CharField(max_length=20, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    diagnostico= forms.CharField(max_length=10, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    tratamiento= forms.CharField(max_length=10, widget=(forms.TextInput(
+        attrs={
+            'class': "form-control"
+        }
+    )))
+    class Meta:
+        model= Registro
+        fields= ['num_historial']
     
